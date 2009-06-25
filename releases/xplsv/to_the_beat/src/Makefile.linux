@@ -1,0 +1,5 @@
+SOURCES = main.c sorollet.c intro.c utils.c
+
+main: main.c
+	gcc $(SOURCES) -o ../build/xplsv_to_the_beat_unpacked_linux `sdl-config --cflags --libs` -lGL -lGLU
+	ls -la ../build

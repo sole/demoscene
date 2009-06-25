@@ -1,0 +1,7 @@
+SOURCES = main.c sorollet.c utils.c intro.c
+
+main: main.c
+	gcc $(SOURCES) -o ../build/xplsv_to_the_beat_unpacked_mac -O3 -mcpu=G4 -mtune=G4 -funroll-loops -finline -fobey-inline -malign-natural `sdl-config --cflags --libs` -framework OpenGL
+	# This is for compressing the executable, adjust as needed
+	#~/Downloads/iPakk-v0.28-macosx/iPakk -i ../build/xplsv_to_the_beat_unpacked_mac -o ../build/xplsv_to_the_beat_mac 
+	ls -la ../build
