@@ -1,0 +1,141 @@
+
+               +------------+ +------------+ +------------+
+              /            / /            / /            / 
+             /   +----+   / /   +----+   / /   +----+   /
+            /   /    /   / /   /    /   / /   /    /   /
+           /   +----+   / /   +----+   / /   +----+   /
+          /            / /            / /            /
+         /    +-------+ /    +-------+ +-------+    /
+        /    /         /    /                 /    /
+       /    /         /    / the girls  +----+    /
+      /    /         /    /  demogroup /         /
+     +----+         +----+            +---------+
+
+   a r e  v e r y  p l e a s e d  t o  s h o w  y o u
+
+          '""' ppg01: scene of the girls '""'
+
+
+
+                                           8888
+                                           8888
+                                           8888_____
+.d88888888888888888   .d88888888888888b.   888888888       .d888888888888888b.
+8888888888888888888  88888888888888888888  8888""""'       8888888888888888888
+q888._____________   8888.__________.8888  8888._________  8888._________.8888
+ "8888888888888888b  q888888888888888888P  q8888888888888  `888888888888888888
+______________.8888   `"""""""888""""""'    `""""""""""""                 8888
+888888888888888888P mh      ..888..                        8888888888888888888
+"""""""""""""""""'          ""888""   scene of the girls   88888888888888888P'
+                              888
+
+
+
+.code, music, add gfx: sole
+.gfx: ayame
+.design and various: sardu
+.ascii: diamondie
+
+So here's finally the source code, almost six years after this was released.
+It was doing nothing sitting idle in my hard drive, and publishing it will
+be the only way I don't lose it :-)
+
+The code is provided for educational purposes only. I take no blame for whatever
+happens to your computer if you dare to run the demo. I take no blame also if you
+take the code as a manual of good practices (it's not). But it shouldn't happen
+anything bad, actually :-)
+
+Have a look at the code, if you learn something interesting - even if it's what
+shouldn't be done, it will have fulfilled its purpose.
+
+I have tried to avoid modifying the code as much as possible, so that it keeps its
+naivety and truly represents what a first demo looks like. This way,
+new coders will never feel embarrased again. But at some points I had to call for
+the cleaning brigade to show up and clean up the code, mostly because some parts
+were buggy as hell and didn't even show anything on the screen. Other times, it was
+because there could easily be 300 lines of code which did nothing and were very
+confusing if I expect anyone to learn something from the sources.
+Unused code and images have been deleted as well. The song has been optimized a bit
+so it now uses approximately 400k less.
+
+There's a general lack of comments and when there are comments, they might easily be
+in Spanish. When you're coding in a hurry or when you're coding late at night in a
+hurry you just write down whatever comes to your mind in whichever form it comes, so
+that's why some comments are in Spanish. I have kept most of them, they look funny 
+to me. Maybe they won't to you, even if you can read Spanish. My sense of fun might
+differ from yours. Oh and there also some variable names in Spanish, and names with
+mixed spanish/english parts. It's all part of the fun!
+
+Many thanks to Spock/RGBA for helping with the dynamic library loading & linking
+stuff, and to trace/xplsv for the support as usual :)
+
+
+~~~~ REQUIREMENTS ~~~~
+
+- A working gcc compiler
+- 'make' 
+- SDL development libraries installed on your system 
+- a moderately decent graphics card which supports opengl
+- a compiled version of SOIL in src/SOIL (for loading textures & saving screenshots)
+- a copy of BASS dll/so/dylib in the root folder (for playing music)
+
+You can get SDL, SOIL and BASS from here respectively:
+http://www.libsdl.org/
+http://www.lonesock.net/soil.html
+http://un4seen.com/
+
+
+
+~~~~ COMPILING ~~~~
+
+For compiling, chdir to the 'src' directory and follow instructions for each system.
+
+The output is placed in the root directory.
+
+* Mac
+
+make mac
+
+* Linux
+
+make linux
+
+* Windows
+
+If you want to contribute a Windows port, feel free to send me a patch or something.
+The code is pretty much portable so nothing more than writing a Makefile target should
+be required.
+
+
+
+~~~~ RUNNING IT ~~~~
+
+If you happen to be using Ubuntu, I have provided a python launcher for configuring 
+the demo parameters without using the command line. From what I have tested, it should
+work on any plain vanilla ubuntu.
+
+Run it with 'python launcher.py' or if it's marked as executable, just double click it
+and say 'Run' when asked if you want to Run or Display.
+
+By default it will run in 640x480 fullscreen. This is the optimum resolution, because the
+images are prepared for that size. Anything more than that just looks plain HORRIBLE, but
+I have added support for more resolutions for the sake of compatibility.
+
+Note: you need to compile the demo, prior to running the launcher. It will fail
+otherwise.
+
+
+~~~~ CONTACT ~~~~
+
+http://soledadpenades.com/about/
+
+
+
+~~~~ COPYING & MODIFYING ~~~~
+
+
+The sources for the demo are GPL'ed. The GPL v3 license does not apply to SOIL (which is
+under the public domain) neither to BASS (which is copyrighted shareware).
+SDL is licensed under the GPL v2.
+
+In short: if you make a remix of this demo, share the sources too! ;)
