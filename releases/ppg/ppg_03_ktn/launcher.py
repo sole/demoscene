@@ -64,7 +64,7 @@ class Launcher:
 		return modes
 	
 	def __init__(self):
-		self.demo_exe = "./ppg03_ktn_linux"
+		self.demo_exe = "./demo"
 	
 		self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
 		self.window.set_title("PPG03: Killotrona")
