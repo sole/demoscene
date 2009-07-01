@@ -47,12 +47,6 @@
 #include "FXsinusplasma.h"
 #include "FXfade.h"
 
-
-/*#define VANCHO 50
-#define VALTO 50
-#define TAM (4*(VANCHO+1)*(VALTO+1))
-*/// XXX
-
 Music miMusic;
 Demo *miDemo;
 int multiSampling;
@@ -62,8 +56,6 @@ int startRow;
 SDL_Surface *screen;
 Uint32 flags;
 
-//float t0;//XXX
-//float angulo=0;//XXX
 
 /* Efectos */
 struct t_effect_ {

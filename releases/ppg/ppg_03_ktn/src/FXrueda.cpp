@@ -143,12 +143,7 @@ void FXrueda::perFrame(float time) {
 	}
 	
 	glDisable(GL_BLEND);
-	/*glColor3f(1,1,0);
-	glBegin(GL_LINE_STRIP);
-		glVertex3f(0,0,0);
-		glVertex3f(miDemo->getWidth(),miDemo->getHeight(),-2);
-		glVertex3f(miDemo->getWidth(),miDemo->getHeight(),2);
-	glEnd();*/
+
 	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 
@@ -427,11 +422,12 @@ void FXrueda::init(void) {
 	}
 
 	// Hay que inicializar el sistema de particulas tb...
-	this->partm1.Add(&parts1);
 	parts1.setMinimumEnergy(100);
 	parts1.setMinimumMass(3);
 	parts1.setOrigin(orisis);
 	parts1.Set(100);
+	this->partm1.Add(&parts1);
+	
 }
 
 void FXrueda::start(void) {

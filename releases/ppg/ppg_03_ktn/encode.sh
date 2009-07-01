@@ -3,7 +3,7 @@
 # to something a bit more palatable by VLC, mplayer et al.
 #
 # Here's how to capture, once glc has been installed:
-# glc-capture --out ./capture.glc -s ./ppg01_sotg_linux
+# glc-capture --out ./capture.glc -s ./demo
 # And then use this script with
 # ./encode.sh ./capture.glc
 # which will (hopefully) generate a capture.glc.mp4 in this dir.

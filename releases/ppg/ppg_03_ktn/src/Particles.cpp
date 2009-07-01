@@ -25,11 +25,11 @@ void ParticleSystem::Update(float tick) {
 	elapsedticks=tick-this->oldtick;
 	this->oldtick=tick;
 	for(i=0;i<this->ParticleCount;i++) {
-		
-		// Primero actualizo la energia
-		/*printf("p: %d X %f Y %f Z %f energy %f\n",i,this->ParticleList[i].position.x,
-		this->ParticleList[i].position.y,this->ParticleList[i].position.z,
-		this->ParticleList[i].energy);*/
+				
+				// // Primero actualizo la energia
+				// printf("p: %d X %f Y %f Z %f energy %f\n",i,this->ParticleList[i].position.x,
+				// this->ParticleList[i].position.y,this->ParticleList[i].position.z,
+				// this->ParticleList[i].energy);
 		
 		
 		this->ParticleList[i].energy=this->ParticleList[i].energy-0.75;//elapsedticks;
@@ -77,7 +77,7 @@ void ParticleSystem::Render() {
 		x=this->ParticleList[i].position.x;
 		y=this->ParticleList[i].position.y;
 		z=this->ParticleList[i].position.z;
-		glColor4f(1,1,1,alfa); // <<<<<<<<<<<- cambiar eso
+		//glColor4f(1,1,1,alfa); // <<<<<<<<<<<- cambiar eso
 		an=this->ParticleList[i].mass;//+this->ParticleList[i].energy;//;
 			/*glBegin(GL_QUADS);
 		glVertex3f(x,y,z);
@@ -86,20 +86,19 @@ void ParticleSystem::Render() {
 		glVertex3f(x,y+an,z);
 		glEnd();*/
 			
-		glBegin(GL_QUADS);
-		
-		glNormal3f( 0.0f, 0.0f, 1.0f);
-		glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y,  z);
-		glTexCoord2f(1.0f, 0.0f); glVertex3f(x+an,y,z);
-		glTexCoord2f(1.0f, 1.0f); glVertex3f(x+an,y+an,z);
-		glTexCoord2f(0.0f, 1.0f); glVertex3f(x,y+an,z);
-		
-		glEnd();
+			glBegin(GL_QUADS);
+			
+			glNormal3f( 0.0f, 0.0f, 1.0f);
+			glTexCoord2f(0.0f, 0.0f); glVertex3f(x, y,  z);
+			glTexCoord2f(1.0f, 0.0f); glVertex3f(x+an,y,z);
+			glTexCoord2f(1.0f, 1.0f); glVertex3f(x+an,y+an,z);
+			glTexCoord2f(0.0f, 1.0f); glVertex3f(x,y+an,z);
+			
+			glEnd();
 			
 			
 	}
 	glDisable(GL_BLEND);
-	
 	//exit(0);
 }
 
@@ -121,15 +120,14 @@ int ParticleSystem::Set(int max_particles) {
 		this->ParticleList[i].position.x=this->origin.x;
 		this->ParticleList[i].position.y=this->origin.y;
 		this->ParticleList[i].position.z=0;//this->origin.z;
-			this->ParticleList[i].energy=(float(rand())/RAND_MAX)*this->minimumEnergy; // pa q no empiecen toas al mismo tiempo
-			this->ParticleList[i].mass=this->minimumMass;
-			this->ParticleList[i].velocity.x=0;
-			this->ParticleList[i].velocity.y=0;
-			this->ParticleList[i].velocity.z=0;
-			this->ParticleList[i].netforce.x=0;
-			this->ParticleList[i].netforce.y=0;
-			this->ParticleList[i].netforce.z=0;
-			
+		this->ParticleList[i].energy = (float(rand())/RAND_MAX)*this->minimumEnergy; // pa q no empiecen toas al mismo tiempo
+		this->ParticleList[i].mass=this->minimumMass;
+		this->ParticleList[i].velocity.x=0;
+		this->ParticleList[i].velocity.y=0;
+		this->ParticleList[i].velocity.z=0;
+		this->ParticleList[i].netforce.x=0;
+		this->ParticleList[i].netforce.y=0;
+		this->ParticleList[i].netforce.z=0;	
 	}
 	this->ParticleCount=maximum;
 	return(max_particles);
@@ -155,6 +153,7 @@ void ParticleSystem::setMinimumMass(float mass) {
 // Constructor
 ParticleManager::ParticleManager() {
 	this->maxParticleSystem=MAXPARTICLESYSTEMS;
+	ParticleSystemCount = 0;
 }
 
 // Destructor
@@ -186,6 +185,7 @@ void ParticleManager::Render() {
 
 void ParticleManager::Update(float tick) {
 	int i;
+
 	for(i=0;i<this->ParticleSystemCount;i++) {
 		this->ParticleSystemList[i]->Update(tick);
 	}
