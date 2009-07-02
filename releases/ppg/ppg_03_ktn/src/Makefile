@@ -7,7 +7,7 @@ linux: $(OBJECTS)
 
 mac: $(OBJECTS)
 	/bin/sh bundle.sh $(TARGET)
-	g++ -ggdb -O0 -o $(TARGET).app/Contents/MacOS/$(TARGET) $(OBJECTS) ./bass/libbass.dylib ./SOIL/libSOIL-mac_ub.a -pthread `sdl-config --cflags --libs` -framework OpenGL
+	g++ -O3 -o $(TARGET).app/Contents/MacOS/$(TARGET) $(OBJECTS) ./bass/libbass.dylib ./SOIL/libSOIL-mac_ub.a -pthread `sdl-config --cflags --libs` -framework OpenGL
 	install_name_tool -change ./bass/libbass.dylib ./libbass.dylib ./$(TARGET).app/Contents/MacOS/$(TARGET)
 	cp ./bass/libbass.dylib $(TARGET).app/Contents/MacOS/
 	cp ./mac/icon.icns $(TARGET).app/Contents/Resources/
