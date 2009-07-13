@@ -24,11 +24,11 @@ void FXpanorama::perFrame(float time) {
 		glNormal3f( 0.0f, 0.0f, 1.0f);
 		glVertex3f(-xt,-yt,z_depth);
 		glVertex3f(xt,-yt, z_depth);
-		glVertex3f(xt,0.18-yt,  z_depth);
-		glVertex3f(-xt,0.18-yt,z_depth);
+		glVertex3f(xt,0.178-yt,  z_depth);
+		glVertex3f(-xt,0.178-yt,z_depth);
 
-		glVertex3f(-xt,0.3,z_depth);
-		glVertex3f(xt,0.3, z_depth);
+		glVertex3f(-xt,0.335f,z_depth);
+		glVertex3f(xt,0.335f, z_depth);
 		glVertex3f(xt,yt+0.1,  z_depth);
 		glVertex3f(-xt,yt+0.1,z_depth);
 	glEnd();
