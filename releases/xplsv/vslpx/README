@@ -89,6 +89,8 @@ The sources for the demo are GPL'ed. The GPL v3 license does not apply to SOIL
 (which is under the public domain) neither to BASS (which is copyrighted
 shareware). SDL is licensed under the GPL v2.
 
+TinyXML is also used, for loading XML files (as one could expect!).
+
 In short: if you make a remix of this demo, share the sources too! ;)
 
 
