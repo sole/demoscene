@@ -103,11 +103,11 @@ fout = fopen(OUTFILE, "w");
 	sorollet_init(SAMPLING_RATE, AUDIO_S16SYS, DESIRED_CHANNELS, BUFFER_SIZE);
 	sorollet_load_song_from_array(song);
 
-	// This does something odd with my system and the window doesn't open
-	// (but the sound oddly works!)
-	// If you know why, let me know (this only happens in linux)
-	//SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
-	//SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 8);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+	SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 2);
+	
+	SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
 	SDL_SetVideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, 32, video_flags);
 	SDL_ShowCursor(0);
