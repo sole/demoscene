@@ -1,0 +1,5 @@
+You can get the sources for libSOIL here: http://www.lonesock.net/soil.html
+
+I have precompiled this version so that it would be easier to compile the demo.
+
+Mac build is a universal binary. Linux build is x86, 32 bit. So if you happen to use a different platform, recompile!

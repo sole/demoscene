@@ -1,0 +1,800 @@
+<script>
+	<config>
+		<param name="name" value="xplsv / tube" />
+<!--		<param name="fullscreen" value="yes" />-->
+		<param name="time_start" value="0" />
+<!--		<param name="screenwidth" value="640" />-->
+<!--		<param name="screenheight" value="480" />-->
+		<param name="rendertotextureX" value="512" />
+		<param name="rendertotexturey" value="512" />
+		<param name="song" value="data/b06.mp3" />
+	</config>
+	<globals>
+		<blendings>
+			<blend name="normal" src="SRC_ALPHA" dst="ONE_MINUS_SRC_ALPHA" />
+			<blend name="additive_saturate" src="ONE" dst="ONE" />
+			<blend name="additive" src="SRC_ALPHA" dst="ONE" />
+			<blend name="test" src="ONE" dst="SRC_ALPHA_SATURATE" />
+			<blend name="otro" src="SRC_COLOR" dst="ONE_MINUS_SRC_COLOR" />
+			<blend name="test2" src="SRC_COLOR" dst="SRC_ALPHA_SATURATE" />
+			<blend name="test3" src="ONE" dst="ZERO" />
+		</blendings>
+	</globals>
+	<resources>
+		<resource id="emptytotal" type="empty" />
+		<resource id="distort" type="distortripple" num_x="3" num_y="3" radio_x="40" radio_y="40" />
+		<resource id="distortpolar" type="distortpolar" num_x="3" num_y="3" radio_x="40" radio_y="40" />
+		<resource id="radialblur" type="radialblur" />
+		<resource id="psycho" type="psychocircles" num_x="10" num_y="10" a="1" r="1" g="0" b="0" />
+		<resource id="filter_dithering" type="filterdithering" thres_r="255" thres_g="50" thres_b="255" thres_modif_r="-1" refresh="0.04" clear="no" />
+		<resource id="filter_flipcolors" type="filterflipcolors" thres_r="255" thres_g="50" thres_b="255" thres_modif_r="-1" refresh="0.03" clear="no" />
+		<resource id="filter_highpass" type="filterhighpass" thres_r="255" thres_g="50" thres_b="255" thres_modif_r="-1" refresh="0.04" clear="no" />
+		<resource id="filter_lowpass" type="filterlowpass" thres_r="0" thres_g="0" thres_b="0" thres_modif_r="0" refresh="0.04" clear="no" />
+		<resource id="filter_midtone" type="filtermidtone" thres_r="128" thres_g="128" thres_b="128" thres_modif_r="-1" refresh="0.04" clear="no" />
+		<resource id="filter_monotone" type="filtermonotone" thres_r="128" thres_g="128" thres_b="128" thres_modif_r="-1" refresh="0.04" clear="no" />
+		<resource id="obj_credits" type="objectterrain" src="data/grid_xplsv_line.raw" g="0" b="0" num_points_x="9" num_points_y="2000" step="1" scale_x="15" scale_z="15" prism_width="12" prism_height="12" translate_x="no" translate_y="no" draw_max_x="65"  />
+		<resource id="scene_beginning" type="scenetubebeginning" a="1" speed_x="40" />
+
+		<resource id="img_top_layer" type="image" src="data/top_layer.png" stretch="yes" />
+		<resource id="img_top_layer2" type="image" src="data/top_layer2.png" stretch="yes" />		
+		<resource id="layout01" type="image" src="data/layout01.png" stretch="yes" />		
+		<resource id="layout02" type="image" src="data/layout02.png" stretch="yes"/>	
+		<resource id="layout04" type="image" src="data/layout04.png" stretch="yes" />			
+		
+		<resource id="v_vict" type="imagesequence" path="data/img/" fps="41"  stretch="yes" >
+			<param name="frame" value="vict0000.png" />
+			<param name="frame" value="vict0001.png" />
+			<param name="frame" value="vict0002.png" />
+			<param name="frame" value="vict0003.png" />
+			<param name="frame" value="vict0004.png" />
+			<param name="frame" value="vict0005.png" />
+			<param name="frame" value="vict0006.png" />
+			<param name="frame" value="vict0007.png" />
+			<param name="frame" value="vict0008.png" />
+			<param name="frame" value="vict0009.png" />
+			<param name="frame" value="vict0010.png" />
+			<param name="frame" value="vict0011.png" />
+			<param name="frame" value="vict0012.png" />
+			<param name="frame" value="vict0013.png" />
+			<param name="frame" value="vict0014.png" />
+			<param name="frame" value="vict0015.png" />
+			<param name="frame" value="vict0016.png" />
+			<param name="frame" value="vict0017.png" />
+			<param name="frame" value="vict0018.png" />
+			<param name="frame" value="vict0019.png" />
+			<param name="frame" value="vict0020.png" />
+		</resource>
+		<resource id="v_wstairs" type="imagesequence" path="data/img/" fps="12" a="0.51" r="1" g="1" b="1" stretch="yes">
+			<param name="frame" value="w_esc0000.png" />
+			<param name="frame" value="w_esc0001.png" />
+			<param name="frame" value="w_esc0002.png" />
+			<param name="frame" value="w_esc0003.png" />
+			<param name="frame" value="w_esc0004.png" />
+			<param name="frame" value="w_esc0005.png" />
+			<param name="frame" value="w_esc0006.png" />
+			<param name="frame" value="w_esc0007.png" />
+			<param name="frame" value="w_esc0008.png" />
+			<param name="frame" value="w_esc0009.png" />
+			<param name="frame" value="w_esc0010.png" />
+			<param name="frame" value="w_esc0011.png" />
+			<param name="frame" value="w_esc0012.png" />
+			<param name="frame" value="w_esc0013.png" />
+			<param name="frame" value="w_esc0014.png" />
+			<param name="frame" value="w_esc0015.png" />
+			<param name="frame" value="w_esc0016.png" />
+			<param name="frame" value="w_esc0017.png" />
+			<param name="frame" value="w_esc0018.png" />
+			<param name="frame" value="w_esc0019.png" />
+			<param name="frame" value="w_esc0020.png" />
+			<param name="frame" value="w_esc0021.png" />
+			<param name="frame" value="w_esc0022.png" />
+			<param name="frame" value="w_esc0023.png" />
+			<param name="frame" value="w_esc0024.png" />
+			<param name="frame" value="w_esc0025.png" />
+			<param name="frame" value="w_esc0026.png" />
+		</resource>
+		<resource id="v_vstairs" type="imagesequence" path="data/img/" fps="12" a="1" stretch="yes">
+			<param name="frame" value="v_stairs0000.png" />
+			<param name="frame" value="v_stairs0001.png" />
+			<param name="frame" value="v_stairs0002.png" />
+			<param name="frame" value="v_stairs0003.png" />
+			<param name="frame" value="v_stairs0004.png" />
+			<param name="frame" value="v_stairs0005.png" />
+			<param name="frame" value="v_stairs0006.png" />
+			<param name="frame" value="v_stairs0007.png" />
+			<param name="frame" value="v_stairs0008.png" />
+			<param name="frame" value="v_stairs0009.png" />
+			<param name="frame" value="v_stairs0010.png" />
+			<param name="frame" value="v_stairs0011.png" />
+			<param name="frame" value="v_stairs0012.png" />
+			<param name="frame" value="v_stairs0013.png" />
+			<param name="frame" value="v_stairs0014.png" />
+			<param name="frame" value="v_stairs0015.png" />
+			<param name="frame" value="v_stairs0016.png" />
+			<param name="frame" value="v_stairs0017.png" />
+			<param name="frame" value="v_stairs0018.png" />
+		</resource>
+		<resource id="v_vandwstairs" type="imagesequence" path="data/img/" fps="11" a="0.51" stretch="yes">
+			<param name="frame" value="v_stairs0000.png" />
+			<param name="frame" value="v_stairs0001.png" />
+			<param name="frame" value="v_stairs0002.png" />
+			<param name="frame" value="v_stairs0003.png" />
+			<param name="frame" value="v_stairs0004.png" />
+			<param name="frame" value="v_stairs0005.png" />
+			<param name="frame" value="v_stairs0006.png" />
+			<param name="frame" value="v_stairs0007.png" />
+			<param name="frame" value="v_stairs0008.png" />
+			<param name="frame" value="v_stairs0009.png" />
+			<param name="frame" value="v_stairs0010.png" />
+			<param name="frame" value="v_stairs0011.png" />
+			<param name="frame" value="v_stairs0012.png" />
+			<param name="frame" value="v_stairs0013.png" />
+			<param name="frame" value="v_stairs0014.png" />
+			<param name="frame" value="v_stairs0015.png" />
+			<param name="frame" value="v_stairs0016.png" />
+			<param name="frame" value="v_stairs0017.png" />
+			<param name="frame" value="v_stairs0018.png" />
+			<param name="frame" value="vict_ent20000.png" />
+			<param name="frame" value="vict_ent20001.png" />
+			<param name="frame" value="vict_ent20002.png" />
+			<param name="frame" value="vict_ent20003.png" />
+			<param name="frame" value="vict_ent20004.png" />
+			<param name="frame" value="vict_ent20005.png" />
+			<param name="frame" value="vict_ent20006.png" />
+			<param name="frame" value="vict_ent20007.png" />
+			<param name="frame" value="vict_ent20008.png" />
+			<param name="frame" value="vict_ent20009.png" />
+			<param name="frame" value="vict_ent20010.png" />
+			<param name="frame" value="vict_ent20011.png" />
+			<param name="frame" value="vict_ent20012.png" />
+			<param name="frame" value="vict_ent20013.png" />
+			<param name="frame" value="vict_ent20014.png" />
+			<param name="frame" value="vict_ent20015.png" />
+			<param name="frame" value="vict_ent20016.png" />
+			<param name="frame" value="vict_ent20017.png" />
+			<param name="frame" value="vict_ent20018.png" />
+			<param name="frame" value="v_pa0000.png" />
+			<param name="frame" value="v_pa0001.png" />
+			<param name="frame" value="v_pa0002.png" />
+			<param name="frame" value="v_pa0003.png" />
+			<param name="frame" value="v_pa0004.png" />
+			<param name="frame" value="v_pa0005.png" />
+			<param name="frame" value="v_pa0006.png" />
+			<param name="frame" value="v_pa0007.png" />
+			<param name="frame" value="v_pa0008.png" />
+			<param name="frame" value="v_pa0009.png" />
+			<param name="frame" value="v_pa0010.png" />
+			<param name="frame" value="v_pa0011.png" />
+			<param name="frame" value="v_pa0012.png" />
+			<param name="frame" value="v_pa0013.png" />
+			<param name="frame" value="v_pa0014.png" />
+			<param name="frame" value="v_pa0015.png" />
+			<param name="frame" value="v_pa0016.png" />
+			<param name="frame" value="v_pa0017.png" />
+			<param name="frame" value="v_pa0018.png" />
+			<param name="frame" value="v_pc0000.png" />
+			<param name="frame" value="v_pc0001.png" />
+			<param name="frame" value="v_pc0002.png" />
+			<param name="frame" value="v_pc0003.png" />
+			<param name="frame" value="v_pc0004.png" />
+			<param name="frame" value="v_pc0005.png" />
+			<param name="frame" value="v_pc0006.png" />
+			<param name="frame" value="v_pc0007.png" />
+			<param name="frame" value="v_pc0008.png" />
+			<param name="frame" value="v_pc0009.png" />
+			<param name="frame" value="v_pc0010.png" />
+			<param name="frame" value="v_pc0011.png" />
+			<param name="frame" value="v_pc0012.png" />
+			<param name="frame" value="v_pc0013.png" />
+			<param name="frame" value="v_pc0014.png" />
+			<param name="frame" value="v_pc0015.png" />
+			<param name="frame" value="v_pc0016.png" />
+			<param name="frame" value="v_pc0017.png" />
+			<param name="frame" value="v_pc0018.png" />
+		</resource>
+		<resource id="v_flashazos" type="imagesequence" path="data/img/" fps="23" a="0.51" r="0.8" g="0.8" b="0.8" stretch="yes" >
+
+			
+			<param name="frame" value="v_pb0000.png" />
+			<param name="frame" value="v_pb0001.png" />
+			<param name="frame" value="v_pb0002.png" />
+			<param name="frame" value="v_pb0003.png" />
+			<param name="frame" value="v_pb0004.png" />
+			<param name="frame" value="v_pb0005.png" />
+			<param name="frame" value="v_pb0006.png" />
+			<param name="frame" value="v_pb0007.png" />
+			<param name="frame" value="v_pb0008.png" />
+			<param name="frame" value="v_pb0009.png" />
+			<param name="frame" value="v_pb0010.png" />
+			<param name="frame" value="v_pb0011.png" />
+			<param name="frame" value="v_pb0012.png" />
+			<param name="frame" value="v_pb0013.png" />
+			<param name="frame" value="v_pb0014.png" />
+			<param name="frame" value="v_pb0015.png" />
+			<param name="frame" value="v_pb0016.png" />
+			<param name="frame" value="v_pb0016.png" />
+			
+			<param name="frame" value="w_pa0000.png" />
+			<param name="frame" value="w_pa0001.png" />
+			<param name="frame" value="w_pa0002.png" />
+			<param name="frame" value="w_pa0003.png" />
+			<param name="frame" value="w_pa0004.png" />
+			<param name="frame" value="w_pa0005.png" />
+			<param name="frame" value="w_pa0006.png" />
+			<param name="frame" value="w_pa0007.png" />
+			<param name="frame" value="w_pa0008.png" />
+			<param name="frame" value="w_pa0009.png" />
+			<param name="frame" value="w_pa0010.png" />
+			<param name="frame" value="w_pa0011.png" />
+			<param name="frame" value="w_pa0012.png" />
+			<param name="frame" value="w_pa0013.png" />
+			<param name="frame" value="w_pa0014.png" />
+			<param name="frame" value="w_pa0015.png" />
+			<param name="frame" value="w_pa0016.png" />
+			<param name="frame" value="w_pa0017.png" />
+			
+			<param name="frame" value="w_pb0000.png" />
+			<param name="frame" value="w_pb0001.png" />
+			<param name="frame" value="w_pb0002.png" />
+			<param name="frame" value="w_pb0003.png" />
+			<param name="frame" value="w_pb0004.png" />
+			<param name="frame" value="w_pb0005.png" />
+			<param name="frame" value="w_pb0006.png" />
+			<param name="frame" value="w_pb0007.png" />
+			<param name="frame" value="w_pb0008.png" />
+			<param name="frame" value="w_pb0009.png" />
+			<param name="frame" value="w_pb0010.png" />
+			<param name="frame" value="w_pb0011.png" />
+			<param name="frame" value="w_pb0012.png" />
+			<param name="frame" value="w_pb0013.png" />
+			<param name="frame" value="w_pb0014.png" />
+			<param name="frame" value="w_pb0015.png" />
+			<param name="frame" value="w_pb0016.png" />
+			<param name="frame" value="w_pb0017.png" />
+			
+			<param name="frame" value="w_wo0217.png" />
+			<param name="frame" value="w_wo0218.png" />
+			<param name="frame" value="w_wo0219.png" />
+			<param name="frame" value="w_wo0220.png" />
+			<param name="frame" value="w_wo0221.png" />
+			<param name="frame" value="w_wo0222.png" />
+			<param name="frame" value="w_wo0223.png" />
+			<param name="frame" value="w_wo0224.png" />
+			<param name="frame" value="w_wo0225.png" />
+			<param name="frame" value="w_wo0226.png" />
+			<param name="frame" value="w_wo0227.png" />
+			<param name="frame" value="w_wo0228.png" />
+			<param name="frame" value="w_wo0229.png" />
+			<param name="frame" value="w_wo0230.png" />
+			<param name="frame" value="w_wo0231.png" />
+			<param name="frame" value="w_wo0232.png" />
+			<param name="frame" value="w_wo0233.png" />
+			<param name="frame" value="w_wo0234.png" />
+			
+		</resource>
+		<resource id="v_lb_out" type="imagesequence" path="data/img/" fps="44" a="1" stretch="yes">
+			<param name="frame" value="lb_out0000.png" />
+			<param name="frame" value="lb_out0001.png" />
+			<param name="frame" value="lb_out0002.png" />
+			<param name="frame" value="lb_out0003.png" />
+			<param name="frame" value="lb_out0004.png" />
+			<param name="frame" value="lb_out0005.png" />
+			<param name="frame" value="lb_out0006.png" />
+			<param name="frame" value="lb_out0007.png" />
+			<param name="frame" value="lb_out0008.png" />
+			<param name="frame" value="lb_out0009.png" />
+			<param name="frame" value="lb_out0010.png" />
+			<param name="frame" value="lb_out0011.png" />
+			<param name="frame" value="lb_out0012.png" />
+			<param name="frame" value="lb_out0013.png" />
+			<param name="frame" value="lb_out0014.png" />
+			<param name="frame" value="lb_out0015.png" />
+			<param name="frame" value="lb_out0016.png" />
+			<param name="frame" value="lb_out0017.png" />
+			<param name="frame" value="lb_out0018.png" />
+			<param name="frame" value="lb_out0019.png" />
+			<param name="frame" value="lb_out0020.png" />
+		</resource>
+		<resource id="v_stress" type="imagesequence" path="data/img/" fps="2" stretch="yes">
+			<param name="frame" value="delays.png" />
+			<param name="frame" value="delays02.png" />
+			<param name="frame" value="westminster.png" />
+			<param name="frame" value="open.png" />
+			<param name="frame" value="northern.png" />
+			<param name="frame" value="lb_light.png" />
+			<param name="frame" value="mindgap.png" />
+		</resource>
+		
+		<resource id="v_bank" type="imagesequence" path="data/img/" fps="7.5" a="1" stretch="yes" >
+			<param name="frame" value="b_entrance0000.png" />
+			<param name="frame" value="b_entrance0001.png" />
+			<param name="frame" value="b_entrance0002.png" />
+			<param name="frame" value="b_entrance0003.png" />
+			<param name="frame" value="b_entrance0004.png" />
+			<param name="frame" value="b_entrance0005.png" />
+			<param name="frame" value="b_entrance0006.png" />
+			<param name="frame" value="b_entrance0007.png" />
+			<param name="frame" value="b_entrance0008.png" />
+			<param name="frame" value="b_entrance0009.png" />
+			<param name="frame" value="b_entrance0010.png" />
+			<param name="frame" value="b_entrance0011.png" />
+			<param name="frame" value="b_entrance0012.png" />
+			<param name="frame" value="b_entrance0013.png" />
+			<param name="frame" value="b_entrance0014.png" />
+			<param name="frame" value="b_entrance0015.png" />
+			<param name="frame" value="b_entrance0016.png" />
+			<param name="frame" value="b_entrance0017.png" />
+			<param name="frame" value="b_entrance0018.png" />
+			<param name="frame" value="b_entrance0019.png" />
+			<param name="frame" value="b_entrance0020.png" />
+			<param name="frame" value="b_entrance0021.png" />
+			<param name="frame" value="b_entrance0022.png" />
+			<param name="frame" value="b_entrance0023.png" />
+			<param name="frame" value="b_entrance0024.png" />
+			<param name="frame" value="b_entrance0025.png" />
+			<param name="frame" value="b_entrance0026.png" />
+			<param name="frame" value="b_entrance0027.png" />
+			<param name="frame" value="b_entrance0028.png" />
+			<param name="frame" value="b_entrance0029.png" />
+			<param name="frame" value="b_entrance0030.png" />
+			<param name="frame" value="b_entrance0031.png" />
+			<param name="frame" value="b_entrance0032.png" />
+			<param name="frame" value="b_entrance0033.png" />
+			<param name="frame" value="b_entrance0034.png" />
+			<param name="frame" value="b_entrance0035.png" />
+			<param name="frame" value="b_entrance0036.png" />
+			<param name="frame" value="b_entrance0037.png" />
+			<param name="frame" value="b_entrance0038.png" />
+			<param name="frame" value="b_entrance0039.png" />
+			<param name="frame" value="b_entrance0040.png" />
+			<param name="frame" value="b_entrance0041.png" />
+			<param name="frame" value="b_entrance0042.png" />
+			<param name="frame" value="b_entrance0043.png" />
+			<param name="frame" value="b_entrance0044.png" />
+			<param name="frame" value="b_entrance0045.png" />
+			<param name="frame" value="b_entrance0046.png" />
+			<param name="frame" value="b_entrance0047.png" />
+			<param name="frame" value="b_entrance0048.png" />
+			<param name="frame" value="b_entrance0049.png" />
+			<param name="frame" value="b_entrance0050.png" />
+			<param name="frame" value="b_entrance0051.png" />
+			<param name="frame" value="b_entrance0052.png" />
+			<param name="frame" value="b_entrance0053.png" />
+			<param name="frame" value="b_entrance0054.png" />
+			<param name="frame" value="b_entrance0055.png" />
+			<param name="frame" value="b_entrance0056.png" />
+			<param name="frame" value="b_entrance0057.png" />
+			<param name="frame" value="b_entrance0058.png" />
+			<param name="frame" value="b_entrance0059.png" />
+			<param name="frame" value="b_entrance0060.png" />
+			<param name="frame" value="b_entrance0061.png" />
+			<param name="frame" value="b_entrance0062.png" />
+			<param name="frame" value="b_entrance0063.png" />
+			<param name="frame" value="b_entrance0064.png" />
+			<param name="frame" value="b_entrance0065.png" />
+			<param name="frame" value="b_entrance0066.png" />
+			<param name="frame" value="b_entrance0067.png" />
+			<param name="frame" value="b_entrance0068.png" />
+			<param name="frame" value="b_entrance0069.png" />
+			<param name="frame" value="b_entrance0070.png" />
+			<param name="frame" value="b_entrance0071.png" />
+			<param name="frame" value="b_entrance0072.png" />
+			<param name="frame" value="b_entrance0073.png" />
+			<param name="frame" value="b_entrance0074.png" />
+			<param name="frame" value="b_entrance0075.png" />
+			<param name="frame" value="b_entrance0076.png" />
+			<param name="frame" value="b_entrance0077.png" />
+			<param name="frame" value="b_entrance0078.png" />
+			<param name="frame" value="b_entrance0079.png" />
+			<param name="frame" value="b_entrance0080.png" />
+			<param name="frame" value="b_entrance0081.png" />
+			<param name="frame" value="b_entrance0082.png" />
+			<param name="frame" value="b_entrance0083.png" />
+			<param name="frame" value="b_entrance0084.png" />
+			<param name="frame" value="b_entrance0085.png" />
+			<param name="frame" value="b_entrance0086.png" />
+			<param name="frame" value="b_entrance0087.png" />
+			<param name="frame" value="b_entrance0088.png" />
+			<param name="frame" value="b_entrance0089.png" />
+			<param name="frame" value="b_entrance0090.png" />
+			<param name="frame" value="b_entrance0091.png" />
+			<param name="frame" value="b_entrance0092.png" />
+			<param name="frame" value="b_entrance0093.png" />
+			<param name="frame" value="b_entrance0094.png" />
+			<param name="frame" value="b_entrance0095.png" />
+			<param name="frame" value="b_entrance0096.png" />
+			<param name="frame" value="b_entrance0097.png" />
+			<param name="frame" value="b_entrance0098.png" />
+			<param name="frame" value="b_entrance0099.png" />
+			<param name="frame" value="b_entrance0100.png" />
+			<param name="frame" value="b_entrance0101.png" />
+			<param name="frame" value="b_entrance0102.png" />
+			<param name="frame" value="b_entrance0103.png" />
+			<param name="frame" value="b_entrance0104.png" />
+			<param name="frame" value="b_entrance0105.png" />
+			<param name="frame" value="b_entrance0106.png" />
+			<param name="frame" value="b_entrance0107.png" />
+			<param name="frame" value="b_entrance0108.png" />
+			<param name="frame" value="b_entrance0109.png" />
+			<param name="frame" value="b_entrance0110.png" />
+			<param name="frame" value="b_entrance0111.png" />
+			<param name="frame" value="b_entrance0112.png" />
+			<param name="frame" value="b_entrance0113.png" />
+			<param name="frame" value="b_entrance0114.png" />
+			<param name="frame" value="b_entrance0115.png" />
+			<param name="frame" value="b_entrance0116.png" />
+			<param name="frame" value="b_entrance0117.png" />
+			<param name="frame" value="b_entrance0118.png" />
+			<param name="frame" value="b_entrance0119.png" />
+			<param name="frame" value="b_entrance0120.png" />
+			<param name="frame" value="b_entrance0121.png" />
+			<param name="frame" value="b_entrance0122.png" />
+			<param name="frame" value="b_entrance0123.png" />
+			<param name="frame" value="b_entrance0124.png" />
+			<param name="frame" value="b_entrance0125.png" />
+			<param name="frame" value="b_entrance0126.png" />
+			<param name="frame" value="b_entrance0127.png" />
+			<param name="frame" value="b_entrance0128.png" />
+			<param name="frame" value="b_entrance0129.png" />
+			<param name="frame" value="b_entrance0130.png" />
+			<param name="frame" value="b_entrance0131.png" />
+			<param name="frame" value="b_entrance0132.png" />
+			<param name="frame" value="b_entrance0133.png" />
+			<param name="frame" value="b_entrance0134.png" />
+			<param name="frame" value="b_entrance0135.png" />
+			<param name="frame" value="b_entrance0136.png" />
+			<param name="frame" value="b_entrance0137.png" />
+			<param name="frame" value="b_entrance0138.png" />
+			<param name="frame" value="b_entrance0139.png" />
+			<param name="frame" value="b_entrance0140.png" />
+			<param name="frame" value="b_entrance0141.png" />
+			<param name="frame" value="b_entrance0142.png" />
+			<param name="frame" value="b_entrance0143.png" />
+			<param name="frame" value="b_entrance0144.png" />
+			<param name="frame" value="b_entrance0145.png" />
+			<param name="frame" value="b_entrance0146.png" />
+			<param name="frame" value="b_entrance0147.png" />
+			<param name="frame" value="b_entrance0148.png" />
+			<param name="frame" value="b_entrance0149.png" />
+			<param name="frame" value="b_entrance0150.png" />
+			<param name="frame" value="b_entrance0151.png" />
+			<param name="frame" value="b_entrance0152.png" />
+			<param name="frame" value="b_entrance0153.png" />
+			<param name="frame" value="b_entrance0154.png" />
+			<param name="frame" value="b_entrance0155.png" />
+			<param name="frame" value="b_entrance0156.png" />
+			<param name="frame" value="b_entrance0157.png" />
+			<param name="frame" value="b_entrance0158.png" />
+			<param name="frame" value="b_entrance0159.png" />
+			<param name="frame" value="b_entrance0160.png" />
+			<param name="frame" value="b_entrance0161.png" />
+			<param name="frame" value="b_entrance0162.png" />
+			<param name="frame" value="b_entrance0163.png" />
+			<param name="frame" value="b_entrance0164.png" />
+			<param name="frame" value="b_entrance0165.png" />
+			<param name="frame" value="b_entrance0166.png" />
+			<param name="frame" value="b_entrance0167.png" />
+			<param name="frame" value="b_entrance0168.png" />
+		</resource>
+		<resource id="v_bank_reverse" type="imagesequence" path="data/img/" fps="84" a="1" stretch="yes" >
+			<param name="frame" value="b_entrance0168.png" />
+			<param name="frame" value="b_entrance0167.png" />
+			<param name="frame" value="b_entrance0166.png" />
+			<param name="frame" value="b_entrance0165.png" />
+			<param name="frame" value="b_entrance0164.png" />
+			<param name="frame" value="b_entrance0163.png" />
+			<param name="frame" value="b_entrance0162.png" />
+			<param name="frame" value="b_entrance0161.png" />
+			<param name="frame" value="b_entrance0160.png" />
+			<param name="frame" value="b_entrance0159.png" />
+			<param name="frame" value="b_entrance0158.png" />
+			<param name="frame" value="b_entrance0157.png" />
+			<param name="frame" value="b_entrance0156.png" />
+			<param name="frame" value="b_entrance0155.png" />
+			<param name="frame" value="b_entrance0154.png" />
+			<param name="frame" value="b_entrance0153.png" />
+			<param name="frame" value="b_entrance0152.png" />
+			<param name="frame" value="b_entrance0151.png" />
+			<param name="frame" value="b_entrance0150.png" />
+			<param name="frame" value="b_entrance0149.png" />
+			<param name="frame" value="b_entrance0148.png" />
+			<param name="frame" value="b_entrance0147.png" />
+			<param name="frame" value="b_entrance0146.png" />
+			<param name="frame" value="b_entrance0145.png" />
+			<param name="frame" value="b_entrance0144.png" />
+			<param name="frame" value="b_entrance0143.png" />
+			<param name="frame" value="b_entrance0142.png" />
+			<param name="frame" value="b_entrance0141.png" />
+			<param name="frame" value="b_entrance0140.png" />
+			<param name="frame" value="b_entrance0139.png" />
+			<param name="frame" value="b_entrance0138.png" />
+			<param name="frame" value="b_entrance0137.png" />
+			<param name="frame" value="b_entrance0136.png" />
+			<param name="frame" value="b_entrance0135.png" />
+			<param name="frame" value="b_entrance0134.png" />
+			<param name="frame" value="b_entrance0133.png" />
+			<param name="frame" value="b_entrance0132.png" />
+			<param name="frame" value="b_entrance0131.png" />
+			<param name="frame" value="b_entrance0130.png" />
+			<param name="frame" value="b_entrance0129.png" />
+			<param name="frame" value="b_entrance0128.png" />
+			<param name="frame" value="b_entrance0127.png" />
+			<param name="frame" value="b_entrance0126.png" />
+			<param name="frame" value="b_entrance0125.png" />
+			<param name="frame" value="b_entrance0124.png" />
+			<param name="frame" value="b_entrance0123.png" />
+			<param name="frame" value="b_entrance0122.png" />
+			<param name="frame" value="b_entrance0121.png" />
+			<param name="frame" value="b_entrance0120.png" />
+			<param name="frame" value="b_entrance0119.png" />
+			<param name="frame" value="b_entrance0118.png" />
+			<param name="frame" value="b_entrance0117.png" />
+			<param name="frame" value="b_entrance0116.png" />
+			<param name="frame" value="b_entrance0115.png" />
+			<param name="frame" value="b_entrance0114.png" />
+			<param name="frame" value="b_entrance0113.png" />
+			<param name="frame" value="b_entrance0112.png" />
+			<param name="frame" value="b_entrance0111.png" />
+			<param name="frame" value="b_entrance0110.png" />
+			<param name="frame" value="b_entrance0109.png" />
+			<param name="frame" value="b_entrance0108.png" />
+			<param name="frame" value="b_entrance0107.png" />
+			<param name="frame" value="b_entrance0106.png" />
+			<param name="frame" value="b_entrance0105.png" />
+			<param name="frame" value="b_entrance0104.png" />
+			<param name="frame" value="b_entrance0103.png" />
+			<param name="frame" value="b_entrance0102.png" />
+			<param name="frame" value="b_entrance0101.png" />
+			<param name="frame" value="b_entrance0100.png" />
+			<param name="frame" value="b_entrance0099.png" />
+			<param name="frame" value="b_entrance0098.png" />
+			<param name="frame" value="b_entrance0097.png" />
+			<param name="frame" value="b_entrance0096.png" />
+			<param name="frame" value="b_entrance0095.png" />
+			<param name="frame" value="b_entrance0094.png" />
+			<param name="frame" value="b_entrance0093.png" />
+			<param name="frame" value="b_entrance0092.png" />
+			<param name="frame" value="b_entrance0091.png" />
+			<param name="frame" value="b_entrance0090.png" />
+			<param name="frame" value="b_entrance0089.png" />
+			<param name="frame" value="b_entrance0088.png" />
+			<param name="frame" value="b_entrance0087.png" />
+			<param name="frame" value="b_entrance0086.png" />
+			<param name="frame" value="b_entrance0085.png" />
+			<param name="frame" value="b_entrance0084.png" />
+			<param name="frame" value="b_entrance0083.png" />
+			<param name="frame" value="b_entrance0082.png" />
+			<param name="frame" value="b_entrance0081.png" />
+			<param name="frame" value="b_entrance0080.png" />
+			<param name="frame" value="b_entrance0079.png" />
+			<param name="frame" value="b_entrance0078.png" />
+			<param name="frame" value="b_entrance0077.png" />
+			<param name="frame" value="b_entrance0076.png" />
+			<param name="frame" value="b_entrance0075.png" />
+			<param name="frame" value="b_entrance0074.png" />
+			<param name="frame" value="b_entrance0073.png" />
+			<param name="frame" value="b_entrance0072.png" />
+			<param name="frame" value="b_entrance0071.png" />
+			<param name="frame" value="b_entrance0070.png" />
+			<param name="frame" value="b_entrance0069.png" />
+			<param name="frame" value="b_entrance0068.png" />
+			<param name="frame" value="b_entrance0067.png" />
+			<param name="frame" value="b_entrance0066.png" />
+			<param name="frame" value="b_entrance0065.png" />
+			<param name="frame" value="b_entrance0064.png" />
+			<param name="frame" value="b_entrance0063.png" />
+			<param name="frame" value="b_entrance0062.png" />
+			<param name="frame" value="b_entrance0061.png" />
+			<param name="frame" value="b_entrance0060.png" />
+			<param name="frame" value="b_entrance0059.png" />
+			<param name="frame" value="b_entrance0058.png" />
+			<param name="frame" value="b_entrance0057.png" />
+			<param name="frame" value="b_entrance0056.png" />
+			<param name="frame" value="b_entrance0055.png" />
+			<param name="frame" value="b_entrance0054.png" />
+			<param name="frame" value="b_entrance0053.png" />
+			<param name="frame" value="b_entrance0052.png" />
+			<param name="frame" value="b_entrance0051.png" />
+			<param name="frame" value="b_entrance0050.png" />
+			<param name="frame" value="b_entrance0049.png" />
+			<param name="frame" value="b_entrance0048.png" />
+			<param name="frame" value="b_entrance0047.png" />
+			<param name="frame" value="b_entrance0046.png" />
+			<param name="frame" value="b_entrance0045.png" />
+			<param name="frame" value="b_entrance0044.png" />
+			<param name="frame" value="b_entrance0043.png" />
+			<param name="frame" value="b_entrance0042.png" />
+			<param name="frame" value="b_entrance0041.png" />
+			<param name="frame" value="b_entrance0040.png" />
+			<param name="frame" value="b_entrance0039.png" />
+			<param name="frame" value="b_entrance0038.png" />
+			<param name="frame" value="b_entrance0037.png" />
+			<param name="frame" value="b_entrance0036.png" />
+			<param name="frame" value="b_entrance0035.png" />
+			<param name="frame" value="b_entrance0034.png" />
+			<param name="frame" value="b_entrance0033.png" />
+			<param name="frame" value="b_entrance0032.png" />
+			<param name="frame" value="b_entrance0031.png" />
+			<param name="frame" value="b_entrance0030.png" />
+			<param name="frame" value="b_entrance0029.png" />
+			<param name="frame" value="b_entrance0028.png" />
+			<param name="frame" value="b_entrance0027.png" />
+			<param name="frame" value="b_entrance0026.png" />
+			<param name="frame" value="b_entrance0025.png" />
+			<param name="frame" value="b_entrance0024.png" />
+			<param name="frame" value="b_entrance0023.png" />
+			<param name="frame" value="b_entrance0022.png" />
+			<param name="frame" value="b_entrance0021.png" />
+			<param name="frame" value="b_entrance0020.png" />
+			<param name="frame" value="b_entrance0019.png" />
+			<param name="frame" value="b_entrance0018.png" />
+			<param name="frame" value="b_entrance0017.png" />
+			<param name="frame" value="b_entrance0016.png" />
+			<param name="frame" value="b_entrance0015.png" />
+			<param name="frame" value="b_entrance0014.png" />
+			<param name="frame" value="b_entrance0013.png" />
+			<param name="frame" value="b_entrance0012.png" />
+			<param name="frame" value="b_entrance0011.png" />
+			<param name="frame" value="b_entrance0010.png" />
+			<param name="frame" value="b_entrance0009.png" />
+			<param name="frame" value="b_entrance0008.png" />
+			<param name="frame" value="b_entrance0007.png" />
+			<param name="frame" value="b_entrance0006.png" />
+			<param name="frame" value="b_entrance0005.png" />
+			<param name="frame" value="b_entrance0004.png" />
+			<param name="frame" value="b_entrance0003.png" />
+			<param name="frame" value="b_entrance0002.png" />
+			<param name="frame" value="b_entrance0001.png" />
+			<param name="frame" value="b_entrance0000.png" />
+		</resource>
+	
+		<resource id="obj_greetings" type="objectterrain" src="data/obj_greetings.raw" g="0.5" num_points_x="265" num_points_y="150" step="1" scale_x="10" scale_z="10" prism_width="6" prism_height="12"  />
+		<resource id="scene_greetings" type="scenetubegreetings" a="1" />
+	</resources>
+	<timeline>
+		<effect resource="emptytotal" start="0" length="1000.0" fadein="2" layer="0">
+		</effect>
+		<effect resource="v_vict" start="0" length="14" layer="10" fadein="4" fadeout="0">
+			<param name="a" value="25" modifier="m#fft0" />		
+		</effect>
+		<effect resource="filter_lowpass" start="0" length="3.57" layer="12" >
+			<param name="refresh" value="0.04" />
+			<param name="thres_modif_r" value="35" />
+		</effect>
+		<effect resource="filter_lowpass" start="3.57" length="3.57" layer="12" >
+			<param name="thres_modif_r" value="-35" />
+			<param name="thres_modif_g" value="35" />
+		</effect>
+		<effect resource="filter_lowpass" start="7.14" length="7.14" layer="12" >			
+			<param name="thres_modif_r" value="-35" />
+			<param name="thres_modif_g" value="-35" />
+			<param name="thres_modif_b" value="35" />
+		</effect>
+		<effect resource="layout01" start="0" length="16" layer="103">
+			<param name="blending" value="normal" />
+			<param name="a" value="25" modifier="m#fft0" />			
+		</effect>
+		
+		<effect resource="v_vandwstairs" start="16" length="7.5" fadeout="1" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="v_vandwstairs" start="23.54" length="7.5" fadeout="1" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="v_vandwstairs" start="31.07" length="7.5" fadeout="1" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="v_vandwstairs" start="38.567" length="7.5" fadeout="1" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="filter_midtone" start="23.54" length="7.5" layer="12" >
+		</effect>
+		<effect resource="filter_monotone" start="31.07" length="7.5" layer="12" >
+			<param name="thres_r" value="128" />
+			<param name="thres_g" value="128" />
+			<param name="thres_modif_r" value="0" />		
+		</effect>
+		<effect resource="radialblur" start="38.567" length="7.5" layer="12">
+		</effect>
+		<effect resource="layout02" start="16" length="30.067" layer="103">
+			<param name="blending" value="additive" />
+			<param name="a" value="15" modifier="m#fft0" />			
+		</effect>
+		<!----------------------------->
+		<effect resource="v_wstairs" start="46" length="3.81" layer="6">
+			<param name="a" value="6" modifier="m#fft0" />
+			<param name="fps" value="40" />
+		</effect>
+		<effect resource="v_wstairs" start="49.81" length="1.926" layer="6">
+			<param name="a" value="6" modifier="m#fft0" />
+			<param name="fps" value="50" />
+		</effect>
+		<effect resource="v_wstairs" start="51.736" length="1.444" layer="6">
+			<param name="fps" value="100" />
+			<param name="a" value="6" modifier="m#fft0" />
+		</effect>
+		<effect resource="layout01" start="46" length="7.18" fadein="7.18" layer="8">
+			<param name="blending" value="additive" />
+			<param name="a" value="5" modifier="m#fft0" />
+						
+		</effect>
+		<!----------------------------->
+		<effect resource="v_flashazos" start="53.6241" length="14.3759" fadeout="0" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="v_flashazos" start="69.60" length="13.17" fadeout="0" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="filter_monotone" start="53.6241" length="29.1459" layer="12" >			
+		</effect>
+		<effect resource="layout02" start="53.6241" length="14.3759" layer="18">
+			<param name="blending" value="additive" />
+			<param name="a" value="7" modifier="m#fft0" />
+		</effect>
+		<effect resource="layout02" start="69.60" length="13.17" layer="18">
+			<param name="blending" value="additive" />
+			<param name="a" value="7" modifier="m#fft0" />
+		</effect>
+		<!----------------------------->
+		<effect resource="v_lb_out" start="82.77" length="7.5" layer="5">
+			<param name="currentFrame" value="0" />
+		</effect>
+		<effect resource="layout04" start="82.77" length="7.5" layer="18">
+			<param name="blending" value="additive" />
+			<param name="a" value="7" modifier="m#fft0" />
+		</effect>
+		
+		<!----------------------------->
+		<effect resource="v_stress" start="90.27" length="16.9564" layer="6">
+			<param name="currentFrame" value="0" />
+			<param name="a" value="15" modifier="m#fft0" />
+		</effect>
+		<effect resource="v_stress" start="107.2264" length="1.522" layer="6">
+			<param name="currentFrame" value="0" />
+			<param name="fps" value="15" />
+			<param name="a" value="30" modifier="m#fft0" />
+		</effect>
+		<effect resource="distort" start="90.27" length="16.9564" layer="20" >
+			<param name="blending" value="normal" />
+			<param name="radio_x" value="35" />
+			<param name="radio_y" value="35" />
+		</effect>
+		<effect resource="filter_flipcolors" start="90.27" length="18.4784" layer="27" > 
+			<param name="blending" value="normal" />
+		</effect>
+		
+		<!----------------------------->
+		
+		<effect resource="v_bank" start="109" length="26.35" fadeout="0" layer="8">
+			<param name="currentFrame" value="0" />
+			<param name="blending" value="normal" />
+			<param name="a" value="7" modifier="m#fft0" />
+		</effect>
+		<effect resource="v_bank_reverse" start="135.57" length="2"  layer="9">
+			<param name="currentFrame" value="0" />
+			<param name="blending" value="normal" />
+			<param name="a" value="1"  />
+		</effect>
+		
+		
+		<!----------------------------->
+		
+		<effect resource="scene_beginning" start="0" length="46" fadein="0" fadeout="0" layer="61" >
+			<param name="bass" value="18" modifier="m#fft1" />
+		</effect>
+		<effect resource="scene_greetings" start="109" length="26.35" fadein="0" fadeout="0" layer="61" >
+			<param name="bass" value="18" modifier="m#fft1" />
+		</effect>
+		
+		
+		<effect resource="img_top_layer" start="0" length="250" layer="121">
+			<param name="blending" value="additive" />
+			<param name="a" value="15" modifier="m#fft0" />
+		</effect>
+		
+		<effect resource="img_top_layer2" start="0" length="250" layer="122">
+			<param name="blending" value="normal" />		
+		</effect>
+	
+	</timeline>
+</script>
