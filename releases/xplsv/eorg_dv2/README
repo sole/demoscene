@@ -1,0 +1,133 @@
+                     ..________
+   ..__        _______\         \ ________             _____..
+-- \    \_____ \       \         \       _\..___ ____ /      / - 
+-- /    /    _/_ \      \         \             \    \      / -- 
+- /____/\    \   \_______\         \__..__\      \____\    / --- 
+         \____\____ \     \         \_  \_________\/______/
+             ..     ..     \_______../               ++ xplsv
+
+
+// escena.org dentro v2 by xplsv ///////////////////////
+
+// sole effects, direction, idea
+// eb7m music
+
+///////////////////////////////////////////////////////
+
+
+
+
+~~~~ REQUIREMENTS ~~~~
+
+- A working gcc compiler 
+- 'make' 
+- SDL development libraries installed on your system 
+- a moderately decent graphics card which supports opengl 
+- a compiled version of SOIL in src/SOIL
+- a compiled version of Lua in src/lua, see Makefile for the appropriate name
+according to your platform (e.g. liblua-linux_x86_32b.a)
+- for linux, libbass.so in the src/bass/ folder
+- for mac, libbass.dylib in the src/bass/ folder is all what we need to
+build the bundle
+
+You can get SDL, SOIL, Lua and BASS from here respectively:
+http://www.libsdl.org/
+http://www.lonesock.net/soil.html
+http://www.lua.org/
+http://un4seen.com/
+
+
+
+~~~~ COMPILING ~~~~
+
+For compiling, chdir to the 'src' directory and follow instructions for each
+system.
+
+The output is placed in the root directory.
+
+* Mac
+
+make mac
+
+This will generate a demo.app bundle application.
+
+* Linux
+
+make linux
+
+It will generate an executable called 'demo'. It will also copy libbass.so there.
+It is REQUIRED for executing the demo.
+
+* Windows
+
+If you want to contribute a Windows port, feel free to send me a patch or
+something. The code is pretty much portable so nothing more than writing a
+Makefile target should be required.
+
+
+
+~~~~ RUNNING IT ~~~~
+
+Double click the generated exe ;-)
+
+The execution parameters are specified in the data/demo.lua script, in the 
+configuration section.
+
+Since everything is "vectorial" in this demo and no slow postprocessing filters
+are used, this demo leads superwell to be watched in hi res mode. Go play with the params!
+
+
+
+~~~~ LUISITA? ~~~~
+
+(Or: why are all functions prepended with "luisita_"?)
+
+Since the core feature of Luisita is the scripting engine, I knew it should
+include ``Lua'' in its name. But I hate when there's a programming language
+and everyone begins creating software for that language, and every single program
+is titled as function plus name of the language. Such as EditPHP, XMLer for Java,
+PySomething, etc. That's very boring!
+
+So I came up with Luisita, which means ``little Louise'' in Spanish. It contains
+Lua and it's a nice innocent name which in addition is a girl's name. We all know
+that if there were more girls creating software, the world would be a nicer place.
+So I hope this encourages all these little potential genius to discover the fun
+in programming.
+
+Luisita enables you to program your demo without digging too deep into OpenGL or
+fighting with C's memory management. Its basic aim is to provide an easy to understand
+environment for newbies so they can begin with some scripting and maybe jump to c/c++
+later, but it can be used by experts alike. The only limit is your imagination :-)
+
+Demos written with Luisita consist in a demo script which uses the provided set of
+simple functions for handling graphics and music.
+
+This set is intentionally reduced and minimalist.
+
+
+
+~~~~ CONTACT ~~~~
+
+http://soledadpenades.com/about/
+
+
+
+~~~~ COPYING & MODIFYING ~~~~
+
+The sources for the demo are GPL'ed. The GPL v3 license does not apply to SOIL
+(which is under the public domain) neither to BASS (which is copyrighted
+shareware). SDL is licensed under the GPL v2. Lua is licensed under the MIT license.
+
+In short: if you make a remix of this demo, share the sources too! ;)
+
+
+~~~~ CREDITS ~~~~
+
+This demo uses the following libraries:
+
+- SDL (Simple Direct Layer), for window management & etc.
+- Bass, for playing audio.
+- SOIL (Simple OpenGL Image Library), for image loading & screenshot saving.
+- Lua, for scripting.
+
+
