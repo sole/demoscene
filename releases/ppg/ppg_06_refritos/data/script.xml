@@ -1,0 +1,190 @@
+<script>
+	<config>
+		<param name="name" value="ppg / re:fritos" />
+		<param name="fullscreen" value="yes" />
+		<param name="time_start" value="0" />
+		<param name="rendertotextureX" value="512" />
+		<param name="rendertotexturey" value="512" />
+		<param name="song" value="data/10yearsj.mp3" />
+	</config>
+	<globals>
+		<blendings>
+			<blend name="normal" src="SRC_ALPHA" dst="ONE_MINUS_SRC_ALPHA" />
+			<blend name="additive_saturate" src="ONE" dst="ONE" />
+			<blend name="additive" src="SRC_ALPHA" dst="ONE" />
+			<blend name="test" src="ONE" dst="SRC_ALPHA_SATURATE" />
+			<blend name="otro" src="SRC_COLOR" dst="ONE_MINUS_SRC_COLOR" />
+			<blend name="test2" src="SRC_COLOR" dst="SRC_ALPHA_SATURATE" />
+			<blend name="test3" src="ONE" dst="ZERO" />
+		</blendings>
+	</globals>
+	<resources>
+		<resource id="emptytotal" type="empty" />
+		<resource id="distort" type="distortripple" num_x="5" num_y="5" radio_x="40" radio_y="40" period_x="2" />
+		<resource id="distortpolar" type="distortpolar" num_x="3" num_y="3" radio_x="40" radio_y="40" />
+		
+		<resource id="boxblur" type="boxblur" />
+		<resource id="radialblur" type="radialblur" />
+		<resource id="radialblurimproved" type="radialblurimproved" />
+		<resource id="motionblur" type="motionblur" a="0.89" />
+		<resource id="psycho" type="psychocircles" num_x="10" num_y="10" a="1" r="1" g="0" b="0" />
+		<resource id="img_tia" type="image" src="data/ella.png" ini_pos_x="-70" a="1"  stretch="yes" />
+		
+		<resource id="img_prodtitle" type="image" src="data/title.png" stretch="yes" />
+		
+		<resource id="img_title_cubegen" type="image" src="data/title_cubegen.png" stretch="yes" />
+		<resource id="img_title_cubenest" type="image" src="data/title_cubenest.png" stretch="yes" />
+		<resource id="img_title_gurru" type="image" src="data/title_gurru.png" stretch="yes" />
+		<resource id="img_title_gurru2" type="image" src="data/title_gurru2.png" stretch="yes" />
+		<resource id="img_title_sorry" type="image" src="data/title_sorry.png" stretch="yes" />
+		<resource id="img_title_catfire" type="image" src="data/title_catfire.png" stretch="yes" />
+		<resource id="img_title_plasma" type="image" src="data/title_plasma.png" stretch="yes" />
+		<resource id="img_title_plasma2" type="image" src="data/title_plasma2.png" stretch="yes" />
+		
+		<resource id="img_tiabuena" type="imageelbueno*** CAMBIAR ***" src="data/ella.png" ini_pos_x="-70" fadein="2" />
+		 <resource id="fx_starfield" type="osstarfield" a="1" r="1" g="1" b="1" src="data/particle.png" gravity_y="-80" max_size="1.6" num_particles="500" />
+		<resource id="scene_cubegen" type="scene10ycubegen" a="0.8" r="1" g="1" b="1" max_size="0.5" num_particles="800" fadeout="3" velocity_x="4" velocity_y="15" velocity_z="4" />
+		<resource id="scene_cubenest" type="scene10ycubenest" num_cubes="300" r="0.6" g="0.6" b="1" a="0.5" />
+		<resource id="scene_tunnel" type="scene10ytunnel" r="0.6" g="0.6" b="1" a="0.25" num_cubes="100" num_steps="130" interval="0.04" />
+		<resource id="scene_tunnel2" type="scene10ytunnel" r="1" g="0.6" b="0.1" a="0.15" num_cubes="120" num_steps="100" interval="0.02"  />
+		
+		<resource id="psyplasma" type="psychoplasma" num_x="40" num_y="20" /> 
+		<resource id="psywnoise" type="psychowhitenoise" num_x="64" num_y="32" />
+		<resource id="psyfire" type="psychofire" num_x="256" num_y="8" />
+		
+		<resource id="scene_sotg_points" type="sotgpoints" r="0.6" g="0.6" b="1" a="1" num_x="50" num_y="50" num_vertex="16" radio="10" />
+		<resource id="obj_greetings" type="objectterrain" src="data/obj_greetings2.raw" r="1" g="1" b="1" num_points_x="1600" num_points_y="150" step="1" scale_x="10" scale_z="10" scale_y="10" prism_width="6" prism_height="12"  />
+		<resource id="scene_greetings" type="scenetubegreetings" />
+		
+		<resource id="planeblue" type="colorplane" r="0" g="0.1" b="0.4" />
+		<resource id="planegreen" type="colorplane" r="0" g="0.2" b="0" a="0.1" />
+		<resource id="planepink" type="colorplane" r="1" g="0.0" b="1"/>
+		<resource id="planered" type="colorplane" r="1" g="0.0" b="0"/>
+	</resources>
+	<timeline>
+		<effect resource="emptytotal" start="0" length="1000.0" layer="0">
+		</effect>
+		<effect resource="planeblue" start="0" length="6.4" fadein="2" fadeout="1" layer="1"/>
+		<effect resource="fx_starfield" start="0" length="6.4" layer="13" fadein="2" fadeout="1" >
+		</effect>
+		<effect resource="img_prodtitle" start="0" length="6.4" layer="100" fadein="2" fadeout="0.5" >
+			<param name="blending" value="additive" />
+		</effect>
+		
+		
+		<effect resource="scene_cubegen" start="6.4" length="13.18" fadeout="1" layer="14" >
+			<param name="blending" value="additive" />
+		</effect>		
+		<effect resource="distort" start="6.4" length="25.6" layer="20" >
+			<param name="blending" value="additive" />
+			<param name="radio_x" value="30" />
+		</effect>
+		<effect resource="motionblur" start="6.4" length="25.6" layer="21" >
+			<param name="blending" value="additive" />
+		</effect>
+		<effect resource="img_title_cubegen" start="6.4" length="13.18" layer="100" fadein="0.5" fadeout="0.5" >
+			<param name="blending" value="additive" />
+		</effect>
+		
+		<effect resource="planegreen" start="19.22" length="13.18"  fadeout="1" layer="1">
+			<param name="blending" value="additive" />
+		</effect>
+		<effect resource="scene_cubenest" start="19.22" length="13.18" fadeout="1" layer="14" >
+			<param name="blending" value="additive" />
+			<param name="num_cubes" value="100" />
+			<param name="r" value="0.9" />
+			<param name="g" value="0.5" />
+			<param name="b" value="0.1" />
+			<param name="a" value="0.5" />
+		</effect>
+		<effect resource="img_title_cubenest" start="19.22" length="13.18" layer="100" fadein="0.5" fadeout="0.5" >
+			<param name="blending" value="additive" />
+		</effect>
+		
+		<effect resource="planeblue" start="32" length="12" fadein="1" layer="1">
+			<param name="blending" value="additive" />
+			<param name="a" value="1" />
+		</effect>
+		<effect resource="scene_tunnel" start="32" length="12" layer="17" >	
+			<param name="interval" value="0.1" />
+		</effect>
+		<effect resource="img_title_gurru" start="32" length="12" layer="100" fadein="0.5" fadeout="0.5" >
+			<param name="blending" value="additive" />
+		</effect>
+		
+		
+		<effect resource="planered" start="44" length="26" fadein="1" fadeout="2" layer="1">
+			<param name="blending" value="additive" />
+			<param name="a" value="10" modifier="m#fft1" />
+		</effect>
+		<effect resource="scene_tunnel2" start="44" length="26" layer="11" >	
+			<param  name="follow" value="true" />
+		</effect>
+		<effect resource="radialblurimproved" start="44" length="26" layer="21" >
+			<param name="a" value="0.25" />
+			<param name="blending" value="additive" />
+			<param name="times" value="5" />
+		</effect>
+		<effect resource="img_title_gurru2" start="44" length="26" layer="100" fadein="0.5" fadeout="0.5" >
+			<param name="blending" value="additive" />
+		</effect>
+		
+		<!--<effect resource="img_tia" start="70" length="3" fadein="1" fadeout="1" layer="12" blending="additive" r="1" g="1" b="1" a="1" />-->
+		<effect resource="img_tia" start="70" length="4" fadein="0.5" fadeout="0.5" layer="20"  r="1" g="1" b="1" a="1">
+			<param name="blending" value="normal" />
+		</effect>
+		<effect resource="img_title_sorry" start="70" length="2" fadein="0.5" fadeout="0.5" layer="21">
+			<param name="blending" value="normal" />
+		</effect>
+		
+		<effect resource="fx_starfield" start="71.5" length="14" fadein="0.5"  layer="13">
+			<param name="gravity_y" value="-100" blending="additive" />
+		</effect>
+		<effect resource="fx_starfield" start="84.5" length="20.5"  fadeout="12.5" layer="14" blending="additive">
+			<param name="gravity_y" value="-250" />
+		</effect>
+		
+		<effect resource="psyfire" start="71.5" length="32.5" fadein="0.5" fadeout="1" blending="additive" a="0.1" layer="15" />
+		<effect resource="psyplasma" start="84.5" length="19.5"  blending="additive" a="0.1" layer="11" fadein="0.5" />
+		
+		<effect resource="img_title_catfire" start="71.5" length="13" fadein="0.5" fadeout="0.5" layer="21">
+			<param name="blending" value="additive" />
+		</effect>
+		<effect resource="img_title_plasma" start="84.5" length="19.5" fadein="0.15" fadeout="0.5" layer="22">
+			<param name="blending" value="additive" />
+		</effect>
+		<effect resource="img_title_plasma2" start="90" length="10" fadein="0.15" fadeout="0.5" layer="23">
+			<param name="blending" value="additive" />
+		</effect>
+		<effect resource="scene_sotg_points" start="104" length="16" fadein="15" fadeout="1" blending="normal" layer="16" />
+
+		<effect resource="radialblur" start="104" length="16" layer="21" >
+			<param name="a" value="0.25" />
+			<param name="blending" value="additive" />
+			<param name="times" value="80" />
+		</effect>
+		
+		<effect resource="planepink" start="120" fadein="1" length="39" layer="20">
+			<param name="a" value="7" modifier="m#fft0" />
+		</effect>
+		<effect resource="planegreen" start="120" fadein="1" length="39" layer="19">
+			<param name="a" value="14" modifier="m#fft10" />
+		</effect>
+		<effect resource="scene_greetings" start="119" length="39" layer="22" >
+			<param name="bass" value="36" modifier="m#fft1" />
+		</effect>
+		<effect resource="radialb lurimproved" start="119" length="39" layer="23" >
+			<param name="a" value="0.45" />
+			<param name="blending" value="additive" />
+			<param name="times" value="20" />
+		</effect>
+		<effect resource="distort" start="119" length="39" layer="24" >
+			<param name="a" value="1" />
+			<param name="clean" value="yes" />
+			<param name="blending" value="additive" />
+			<param name="radio_x" value="2" />
+			<param name="period_x" value="5" />
+		</effect>
+		
+	</timeline>
+</script>

@@ -1,0 +1,108 @@
+
+
+              +------------+ +------------+ +------------+
+              /            / /            / /            / 
+             /   +----+   / /   +----+   / /   +----+   /
+            /   /    /   / /   /    /   / /   /    /   /
+           /   +----+   / /   +----+   / /   +----+   /
+          /            / /            / /            /
+         /    +-------+ /    +-------+ +-------+    /
+        /    /         /    /                 /    /
+       /    /         /    / the girls  +----+    /
+      /    /         /    /  demogroup /         /
+     +----+         +----+            +---------+
+
+   a r e  v e r y  p l e a s e d  t o  s h o w  y o u
+
+             '""' ppg06: re:fritos '""'
+
+                  sole - code, music, antidesign
+
+
+
+
+~~~~ REQUIREMENTS ~~~~
+
+- A working gcc compiler 
+- 'make' 
+- SDL development libraries installed on your system 
+- a moderately decent graphics card which supports opengl 
+- a compiled version of SOIL in src/SOIL
+- for linux, libbass.so in the src/bass/ folder
+- for mac, libbass.dylib in the src/bass/ folder is all what we need to
+build the bundle
+
+You can get SDL, SOIL and BASS from here respectively:
+http://www.libsdl.org/
+http://www.lonesock.net/soil.html
+http://un4seen.com/
+
+
+
+~~~~ COMPILING ~~~~
+
+For compiling, chdir to the 'src' directory and follow instructions for each
+system.
+
+The output is placed in the root directory.
+
+* Mac
+
+make mac
+
+This will generate a demo.app bundle application.
+
+* Linux
+
+make linux
+
+It will generate an executable called 'demo'. It will also copy libbass.so there.
+It is REQUIRED for executing the demo.
+
+* Windows
+
+If you want to contribute a Windows port, feel free to send me a patch or
+something. The code is pretty much portable so nothing more than writing a
+Makefile target should be required.
+
+~~~~ RUNNING IT ~~~~
+
+If you happen to be using Ubuntu, I have provided a python launcher for
+configuring the demo parameters without using the command line. From what I
+have tested, it should work on any plain vanilla ubuntu.
+
+Run it with 'python launcher.py' or if it's marked as executable, just double
+click it and say 'Run' when asked if you want to Run or Display.
+
+By default it will run in 640x480 fullscreen. This is the optimum resolution,
+because the images are prepared for that size. Anything more than that just
+looks a bit bad (because of the textures), but the rest is pretty decent.
+Sizes more than 1024x768 will probably fail due to the inefficient way textures
+are handled (specially when doing effects such as blur). You have been warned.
+
+Note: you need to compile the demo, prior to running the launcher. It will
+fail otherwise.
+
+~~~~ CONTACT ~~~~
+
+http://soledadpenades.com/about/
+
+~~~~ COPYING & MODIFYING ~~~~
+
+The sources for the demo are GPL'ed. The GPL v3 license does not apply to SOIL
+(which is under the public domain) neither to BASS (which is copyrighted
+shareware). SDL is licensed under the GPL v2.
+
+In short: if you make a remix of this demo, share the sources too! ;)
+
+
+~~~~ CREDITS ~~~~
+
+This demo uses the following libraries:
+
+- SDL (Simple Direct Layer), for window management & etc.
+- Bass, for playing audio.
+- SOIL (Simple OpenGL Image Library), for image loading & screenshot saving.
+- TinyXML, for XML loading.
+
+
