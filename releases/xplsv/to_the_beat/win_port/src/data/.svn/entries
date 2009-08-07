@@ -1,0 +1,52 @@
+8
+
+dir
+255
+http://soledadpenades.com/svn/repo/trunk/code/c++/sorollet/src_c/data
+http://soledadpenades.com/svn/repo
+
+
+
+2008-07-24T18:38:26.803971Z
+253
+solesvn
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+678b18ac-d538-0410-b72c-073eaa7ce448
+
+vector_graphics.h
+file
+
+
+
+
+2008-07-24T22:58:44.000000Z
+3b88012b33dac23b14568576f2e79e9e
+2008-07-24T18:38:26.803971Z
+253
+solesvn
+
+song.h
+file
+
+
+
+
+2008-07-24T18:40:15.000000Z
+afcb156c8f7cfe550500443b33c7cbc7
+2008-07-24T18:38:26.803971Z
+253
+solesvn
+
