@@ -1,6 +1,7 @@
 #include "Effect.h"
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
 using namespace std;
 
 CEffect::CEffect() {

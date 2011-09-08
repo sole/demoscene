@@ -2,6 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
+#include <cstdio>
 using namespace std;
 
 #define PI 3.14159f
